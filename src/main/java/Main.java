@@ -3,9 +3,9 @@ import help_classes.ListNode;
 public class Main {
     public static void main(String[] args) {
 
-        ThreeSum x = new ThreeSum();
+        ThreeSumClosest x = new ThreeSumClosest();
 
-        System.out.println(x.threeSum(new int[]{-1, 0, 1, 2,2,2,2, -1,-1,-1,-1,-1, -4}));
+        System.out.println(x.threeSumClosest(new int[]{10,20,30,40,50,60,70,80,90}, 1));
 
 
     }
