@@ -18,7 +18,7 @@ public class LetterCombinationsPhoneNumber {
     //recursion, backtracking
     public List<String> letterCombinationsDFS(String digits) {
         List<String> result = new ArrayList<>();
-        if (digits == null || digits.length() == 0)
+        if (digits == null || digits.isEmpty())
             return result;
         dfsHelper(digits, 0, result, new StringBuilder());
 

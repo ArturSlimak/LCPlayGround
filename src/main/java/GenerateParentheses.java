@@ -3,19 +3,39 @@ import java.util.List;
 
 public class GenerateParentheses {
     public List<String> generateParenthesis(int n) {
-        String[] elements = {"(", ")"};
         List<String> result = new ArrayList<>();
-        String current = "";
-        parenthesisGenerator(elements, n, current, result);
+        if (n == 0)
+            return result;
+
+
+
+        parenthesisGenerator(0,0, n, new StringBuilder(), result);
         return result;
     }
 
-    private void parenthesisGenerator(String[] pairs, int amountOfPairs, String current, List<String> result) {
-        result.add(current);
-        for (int i = 0; i < amountOfPairs; i++) {
+    private void parenthesisGenerator(
+            int openCount,
+            int closeCount,
+            int n,
+            StringBuilder currentString,
+            List<String> result
+    ) {
+        if (currentString.length() == n * 2) { //base condition
+            result.add(currentString.toString());
+            return;
+        }
+
+        if(openCount < n) {
+            currentString.append("(");
+            parenthesisGenerator(openCount+1, closeCount, n, currentString, result);
+            currentString.deleteCharAt(currentString.length()-1); //this is the backtracking !!!!!
+        }
+
+        if(closeCount<openCount) {
+            currentString.append(")");
+            parenthesisGenerator(openCount, closeCount+1, n, currentString, result);
+            currentString.deleteCharAt(currentString.length()-1);
 
         }
     }
-
-
 }
